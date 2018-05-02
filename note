@@ -1,0 +1,40 @@
+Full Description
+
+-- TAG
+ 1757  docker build -t joechiu/test .
+ 1759  docker tag joechiu/test joechiu/test:Wed
+or
+ 1719  docker tag 404f5444c787 joechiu/test:firsttag
+
+
+-- create volume foo
+-- pull and run ubuntu container
+-- perl script hello.pl
+-- commit to a new container
+-- test perl hello
+-- run perl hello to output to volume foo
+
+-- create volume foo
+docker volume create foo
+docker inspect foo
+
+-- pull and run ubuntu container
+docker run -it ubuntu
+cat > /home/hello.pl
+
+#!/usr/bin/perl
+print "hello world!\n";
+chmod 755 /home/hello.pl
+exit
+
+-- commit to a new container
+docker commit -m 'hello' -a 'joec' 77e639c3b98e ubuntu-hello
+
+-- test perl hello
+docker run --rm -ti ubuntu-hello sh -c '/home/hello.pl'
+
+-- run perl hello to output to volume foo
+docker run --rm -ti -v foo:/foo ubuntu-hello sh -c '/home/hello.pl >> /foo/hello.txt'
+docker run --rm -ti -v foo:/foo ubuntu-hello sh -c 'for i in seq 1 10; do /home/hello.pl >> /foo/hello.txt; done'
+
+
