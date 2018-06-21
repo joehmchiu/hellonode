@@ -20,7 +20,7 @@ node {
 
         app.inside {
             sh 'echo "Jenkinsfile: $(date) >> /tmp/hello.txt"'
-            sh 'sleep 10'
+            sh 'sleep 20'
             sh 'echo "Tests passed"'
         }
     }
