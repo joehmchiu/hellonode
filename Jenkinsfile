@@ -19,7 +19,7 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
-            sh echo "Jenkinsfile: "`date` >> /tmp/hello.txt
+            sh echo "Jenkinsfile: $(date)" >> /tmp/hello.txt
             sh 'sleep 10'
             sh 'echo "Tests passed"'
         }
