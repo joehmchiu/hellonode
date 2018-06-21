@@ -19,6 +19,7 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         app.inside {
+            sh 'sleep 5'
             sh 'echo "Tests passed"'
         }
     }
