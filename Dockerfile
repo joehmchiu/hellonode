@@ -1,5 +1,6 @@
 # use a node base image
-FROM node:7-onbuild
+# FROM node:7-onbuild
+FROM registry.hub.docker.com/joechiu/hellonode:latest
 
 # set maintainer
 LABEL maintainer "miiro@getintodevops.com"
