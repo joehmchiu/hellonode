@@ -4,7 +4,7 @@ FROM node:7-onbuild
 # set maintainer
 LABEL maintainer "miiro@getintodevops.com"
 
-RUN echo "Dockerfile: $(date)" >> /tmp/hello.txt
+RUN echo "Dockerfile: \$(date)" >> /tmp/hello.txt
 RUN sleep 10
 
 # set a health check
