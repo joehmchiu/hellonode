@@ -5,7 +5,7 @@ FROM node:7-onbuild
 LABEL maintainer "miiro@getintodevops.com"
 
 RUN echo `date` >> /tmp/hello.txt
-RUN sleep 5
+RUN sleep 10
 
 # set a health check
 HEALTHCHECK --interval=5s \
