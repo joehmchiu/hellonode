@@ -1,6 +1,12 @@
 node {
     def app
     
+    stage('sudo chown to docker daemon') {
+        steps {
+            sh 'chown jenkins /var/run/docker.sock'
+        }
+    }
+
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
 
