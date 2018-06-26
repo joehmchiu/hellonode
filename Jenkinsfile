@@ -1,6 +1,7 @@
 node {
     def app
     def NOW = Calendar.getInstance().getTime().format('YYYYMMdd-hhmmss',TimeZone.getTimeZone('CST'))
+    println NOW
     
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -32,8 +33,9 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            // app.push("docker-jenkins-docker-${env.BUILD_NUMBER}")
-            app.push("docker-jenkins-docker-" + NOW)
+            app.push("docker-jenkins-docker-${env.BUILD_NUMBER}")
+            // app.push("docker-jenkins-docker-" + NOW)
+            app.push("docker-jenkins-docker-${currentBuild.startTimeInMillis}")
             app.push("latest")
         }
     }
