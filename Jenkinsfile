@@ -2,9 +2,7 @@ node {
     def app
     
     stage('sudo chown to docker daemon') {
-        steps {
-            sh 'chown jenkins /var/run/docker.sock'
-        }
+        sh 'chown jenkins /var/run/docker.sock'
     }
 
     stage('Clone repository') {
