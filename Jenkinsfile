@@ -32,7 +32,7 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             // app.push("docker-jenkins-docker-${env.BUILD_NUMBER}")
-            app.push("docker-jenkins-docker-${currentBuild.startTimeInMillis}")
+            app.push("docker-jenkins-docker-${Util.getTimeSpanString(System.currentTimeMillis()}")
             app.push("latest")
         }
     }
