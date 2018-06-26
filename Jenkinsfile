@@ -1,6 +1,7 @@
 node {
     def app
     def date = new Date()
+    def TAG = 'docker-jenkins-docker-' + date
     
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -33,7 +34,7 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
             // app.push("docker-jenkins-docker-${env.BUILD_NUMBER}")
-            app.push("docker-jenkins-docker-".date)
+            app.push(TAG)
             app.push("latest")
         }
     }
