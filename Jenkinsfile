@@ -1,6 +1,6 @@
 node {
     def app
-    def NOW = Calendar.getInstance().getTime().format('YYYYMMdd-hhmmss',TimeZone.getTimeZone('CST'))
+    def NOW = new Date()
     println NOW
     
     stage('Clone repository') {
