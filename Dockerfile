@@ -6,7 +6,7 @@ FROM joechiu/hellonode:latest
 LABEL maintainer "miiro@getintodevops.com"
 
 RUN echo "Dockerfile: $(date)" >> /tmp/hello.txt
-RUN sleep 20
+RUN sleep 10
 
 # set a health check
 HEALTHCHECK --interval=5s \
